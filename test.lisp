@@ -1,4 +1,4 @@
-(defun convert-to-float ((b '(unsigned-byte 32)))
+(defun convert-to-float (b)
   (let ((a (/ (+ (aref b 0) (ash (aref b 1) 8) (ash (logand #b01111111 (aref b 2)) 16)) (ash 1 23)))
         (b (+ (ash (aref b 2) -7) (ash (logand #b01111111 (aref b 3)) 1)))
         (c (ash (aref b 3) -7)))
@@ -13,6 +13,4 @@
           )
       (read-sequence bin1 in)
       (read-sequence bin2 in)
-      (print bin1)
-      (print (convert-to-float bin2))
       )))
